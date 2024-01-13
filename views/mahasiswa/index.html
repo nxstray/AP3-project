@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Golang CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&family=Poppins:ital@0;1&display=swap');
+
+      body {
+        font-family: 'poppins', sans-serif;
+      }
+      </style>
+
+    <title>GOLANG CRUD</title>
+  </head>
+  <body>
+    <div class ="container mt-5">
+        <h3 class="text-center">Data Mahasiswa</h3>
+        <a href="/mahasiswa/add" class="btn btn-sm btn-primary">Tambah data</a>
+        <hr>
+        <hr/>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>NPM</th>
+                    <th>Nama Lengkap</th>
+                    <th>Fakultas</th>
+                    <th>Kelas</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+              {{ range .mahasiswa }}
+                  <tr>
+                    <td>{{ .Npm }}</td>
+                    <td>{{ .NamaLengkap }}</td>
+                    <td>{{ .Fakultas }}</td>
+                    <td>{{ .Kelas }}</td>
+                    <td>
+                      <a href="/mahasiswa/edit?id={{.Id}}" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="/mahasiswa/delete?id={{.Id}}" onclick="return confirm('Apakah anda yakin ingin menghapus data?')" class="btn btn-sm btn-danger">Hapus</a>
+                    </td>
+                  </tr>
+              {{ end }}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

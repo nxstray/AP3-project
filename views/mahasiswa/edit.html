@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Golang CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&family=Poppins:ital@0;1&display=swap');
+  
+        body {
+          font-family: 'poppins', sans-serif;
+        }
+        </style>
+
+    <title>GOLANG CRUD</title>
+
+    <style>
+        body {
+            background-color: #B6C4B6;
+        }
+        
+        .container {
+            max-width:550px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class ="container mt-5">
+        <h3 class="text-center">Ubah data mahasiswa</h3>
+        <a href="/mahasiswa" class="btn btn-sm btn-primary mt-4">Lihat data</a>
+        <hr/>
+
+        {{ if .pesan }}
+            <div class="alert alert-success">
+                {{ .pesan }}
+            </div>
+        {{ end }}
+
+        <form action="/mahasiswa/edit" method="post">
+            <div class ="form-group mb-2">
+                <label for="">NPM</label>
+                <input type="text" name="npm" value="{{ .mahasiswa.Npm }}" class="form-control {{ if .validation.NamaLengkap }} is-invalid {{ end }}"  readonly>
+                <div class="invalid-feedback">
+                    {{ .validation.Npm }}
+                </div>
+            </div>
+
+            <div class ="form-group mb-2">
+                <label for="">Nama Lengkap</label>
+                <input type="text" name="nama_lengkap" value="{{ .mahasiswa.NamaLengkap }}" class="form-control {{ if .validation.NamaLengkap }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.NamaLengkap }}
+                </div>
+            </div>
+
+            <div class ="form-group mb-2">
+                <label for="">Fakultas</label>
+                <input type="text" name="fakultas" value="{{ .mahasiswa.Fakultas }}" class="form-control {{ if .validation.Fakultas }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.Fakultas }}
+                </div>
+            </div>
+
+            <div class ="form-group mb-2">
+                <label for="">Kelas</label>
+                <input type="text" name="kelas" value="{{ .mahasiswa.Kelas }}" class="form-control {{ if .validation.Kelas }} is-invalid {{ end }}">
+                <div class="invalid-feedback">
+                    {{ .validation.Kelas }}
+                </div>
+            </div>
+
+            <div class ="form-group">
+                <input type="hidden" name="id" value="{{ .mahasiswa.Id }}" />
+                <button class="btn btn-primary btn-block" type="submit">UBAH DATA</button>
+            </div>
+        </form>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
