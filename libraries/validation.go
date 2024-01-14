@@ -29,9 +29,9 @@ func NewValidation() *Validation {
 		return name
 	})
 
-	//custom error
+	// custom error
 	validate.RegisterTranslation("required", trans, func(ut ut.Translator) error {
-		return ut.Add("Required", "{0} harus diisi", true)
+		return ut.Add("required", "{0} harus diisi", true)
 	}, func(ut ut.Translator, fe validator.FieldError) string {
 		t, _ := ut.T("required", fe.Field())
 		return t
